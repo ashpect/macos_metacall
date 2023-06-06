@@ -50,12 +50,26 @@ create_pkg() {
 
 }
 
+extract_metacall() {
+    mkdir payload
+    cd payload
+    xar -xf ../metacall-0.5.27.pkg
+    echo "ok"
+    cd ..
+    mkdir metacall
+    cd metacall
+    tar -xf ../payload/Payload
+    cd ..
+    rm -rf payload
+}
+
 main() {
-    prepare_install
-    install_metacall_brew
-    build_formula
-    install_brewpkg
+    #prepare_install
+    #install_metacall_brew
+    #build_formula
+    #install_brewpkg
     create_pkg
+    extract_metacall
 }
 
 main
